@@ -40,6 +40,7 @@ namespace Siffrum.Ecom.Foundation
             var googleCloudLocation = new GoogleCloudLocation();
             var oneSignal = new OneSignalSettings();
             var smsSettings = new SmsSettings();
+            var s3Settings = new S3Settings();
             //var externalIntegrations = new ExternalIntegrations();
 
             // Bind from appsettings.json or Environment Variables
@@ -51,6 +52,7 @@ namespace Siffrum.Ecom.Foundation
             Configuration.GetRequiredSection("GoogleCloudLocation").Bind(googleCloudLocation);
             Configuration.GetRequiredSection("OneSignalSettings").Bind(oneSignal);
             Configuration.GetRequiredSection("SmsSettings").Bind(smsSettings);
+            Configuration.GetSection("S3Settings").Bind(s3Settings);
 
             configObject.SmtpMailSettings = mailSettings;
             configObject.AppleAuth = appleAuth;
@@ -58,6 +60,7 @@ namespace Siffrum.Ecom.Foundation
             configObject.GoogleCloudLocation = googleCloudLocation;
             configObject.OneSignalSettings = oneSignal;
             configObject.SmsSettings = smsSettings;
+            configObject.S3Settings = s3Settings;
             //configObject.ExternalIntegrations = externalIntegrations;
 
             // Override values with environment variables from Render

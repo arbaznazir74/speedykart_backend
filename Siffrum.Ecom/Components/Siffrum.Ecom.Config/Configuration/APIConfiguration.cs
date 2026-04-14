@@ -26,6 +26,7 @@
         public GoogleCloudLocation GoogleCloudLocation { get; set; }
         public OneSignalSettings OneSignalSettings { get; set; }
         public SmsSettings SmsSettings { get; set; }
+        public S3Settings S3Settings { get; set; }
 
 
         #endregion
