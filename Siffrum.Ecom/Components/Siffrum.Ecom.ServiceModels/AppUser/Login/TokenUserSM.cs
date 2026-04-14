@@ -15,6 +15,7 @@ namespace Siffrum.Ecom.ServiceModels.AppUser.Login
         public string? Username { get; set; }
         public string Email { get; set; }
         public string? Image { get; set; }
+        public string? NetworkImage { get; set; }
 
         public string? Mobile { get; set; }
         /*[IgnorePropertyOnWrite(AutoMapConversionType.Dm2SmOnly)]

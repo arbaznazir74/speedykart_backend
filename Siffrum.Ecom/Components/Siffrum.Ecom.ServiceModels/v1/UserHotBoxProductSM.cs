@@ -7,6 +7,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public long Id { get; set; }
         public string Name { get; set; }
         public string ImageBase64 { get; set; }
+        public string? NetworkImage { get; set; }
         public string? Description { get; set; }
         public decimal Price { get; set; }
         public decimal? DiscountedPercentage { get; set; } 

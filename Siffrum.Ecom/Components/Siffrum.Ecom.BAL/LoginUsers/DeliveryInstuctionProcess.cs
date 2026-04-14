@@ -131,15 +131,9 @@ namespace Siffrum.Ecom.BAL.LoginUsers
             var sm = _mapper.Map<DeliveryInstructionsSM>(dm);
             if (!string.IsNullOrEmpty(dm.AudioPath))
             {
-                var audioBase64 = await _imageProcess.ConvertToBase64(dm.AudioPath);
-                if (!string.IsNullOrEmpty(audioBase64))
-                {
-                    sm.AudioBase64 = audioBase64;
-                }
-                else
-                {
-                    sm.AudioBase64 = null;
-                }
+                var aImg = await _imageProcess.ResolveImage(dm.AudioPath);
+                sm.AudioBase64 = aImg.Base64;
+                sm.NetworkAudio = aImg.NetworkUrl;
             }
 
             return sm;

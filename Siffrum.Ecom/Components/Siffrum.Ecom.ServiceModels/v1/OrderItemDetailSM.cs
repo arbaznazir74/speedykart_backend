@@ -16,6 +16,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public long ProductVariantId { get; set; }
         public string? VariantName { get; set; }
         public string? VariantImageBase64 { get; set; }
+        public string? NetworkVariantImage { get; set; }
         public string? Indicator { get; set; }
 
         // Pricing

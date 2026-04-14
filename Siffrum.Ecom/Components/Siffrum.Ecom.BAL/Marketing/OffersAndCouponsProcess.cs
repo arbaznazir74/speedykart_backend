@@ -118,7 +118,11 @@ namespace Siffrum.Ecom.BAL.Marketing
             var sm = _mapper.Map<OffersAndCouponsSM>(dm);
 
             if (!string.IsNullOrEmpty(dm.Base64Path))
-                sm.PathBase64 = await _imageProcess.ConvertToBase64(dm.Base64Path);
+            {
+                var oImg = await _imageProcess.ResolveImage(dm.Base64Path);
+                sm.PathBase64 = oImg.Base64;
+                sm.NetworkPath = oImg.NetworkUrl;
+            }
 
             return sm;
         }

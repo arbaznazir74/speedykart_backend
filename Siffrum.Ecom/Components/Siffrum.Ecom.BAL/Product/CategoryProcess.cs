@@ -498,16 +498,13 @@ namespace Siffrum.Ecom.BAL.Product
             var result = new List<UserCategorySummarySM>();
             foreach (var c in categories)
             {
-                string? imageBase64 = null;
-                if (!string.IsNullOrEmpty(c.Image))
-                {
-                    imageBase64 = await _imageProcess.ConvertToBase64(c.Image);
-                }
+                var cImg = await _imageProcess.ResolveImage(c.Image);
                 result.Add(new UserCategorySummarySM
                 {
                     Id = c.Id,
                     Name = c.Name,
-                    ImageBase64 = imageBase64,
+                    ImageBase64 = cImg.Base64,
+                    NetworkImage = cImg.NetworkUrl,
                     ProductsCount = c.ProductsCount
                 });
             }
@@ -621,11 +618,13 @@ namespace Siffrum.Ecom.BAL.Product
             var comboProducts = await _comboProcess.GetComboProductsInCategory(category.Id, PlatformTypeSM.HotBox, 2);
 
             // STEP 3: Prepare response
+            var catImg = await _imageProcess.ResolveImage(category?.Image);
             return new UserHotBoxCategoryProductsSM
             {
                 Id = category.Id,
                 CategoryName = category?.Name,
-                ImageBase64 = await _imageProcess.ConvertToBase64(category?.Image),
+                ImageBase64 = catImg.Base64,
+                NetworkImage = catImg.NetworkUrl,
                 Products = products,
                 ComboProducts = comboProducts
             };
@@ -963,12 +962,16 @@ namespace Siffrum.Ecom.BAL.Product
             // Images
             if (!string.IsNullOrEmpty(dm.Image))
             {
-                sm.ImageBase64 = await _imageProcess.ConvertToBase64(dm.Image);
+                var catImg = await _imageProcess.ResolveImage(dm.Image);
+                sm.ImageBase64 = catImg.Base64;
+                sm.NetworkImage = catImg.NetworkUrl;
             }
 
             if (!string.IsNullOrEmpty(dm.WebImage))
             {
-                sm.WebImage = await _imageProcess.ConvertToBase64(dm.WebImage);
+                var webImg = await _imageProcess.ResolveImage(dm.WebImage);
+                sm.WebImage = webImg.Base64;
+                sm.NetworkWebImage = webImg.NetworkUrl;
             }
 
             // Product count: count unique products (by name) in category, not seller duplicates
@@ -1161,7 +1164,11 @@ namespace Siffrum.Ecom.BAL.Product
                 if (dm == null) continue;
                 var sm = _mapper.Map<CategorySM>(dm);
                 if (!string.IsNullOrEmpty(dm.Image))
-                    sm.ImageBase64 = await _imageProcess.ConvertToBase64(dm.Image);
+                {
+                    var sImg = await _imageProcess.ResolveImage(dm.Image);
+                    sm.ImageBase64 = sImg.Base64;
+                    sm.NetworkImage = sImg.NetworkUrl;
+                }
                 response.Add(sm);
             }
             return response;

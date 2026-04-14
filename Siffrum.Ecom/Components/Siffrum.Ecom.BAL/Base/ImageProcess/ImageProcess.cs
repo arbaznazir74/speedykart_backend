@@ -137,6 +137,26 @@ namespace Siffrum.Ecom.BAL.Base.ImageProcess
             }
         }
 
+        public record ImageResult(string? NetworkUrl, string? Base64);
+
+        public async Task<ImageResult> ResolveImage(string? filePath)
+        {
+            if (string.IsNullOrWhiteSpace(filePath))
+                return new ImageResult(null, null);
+
+            var result = await ConvertToBase64(filePath);
+            if (result == null)
+                return new ImageResult(null, null);
+
+            if (result.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+                || result.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                return new ImageResult(result, null);
+            }
+
+            return new ImageResult(null, result);
+        }
+
         private static string ResolveS3Prefix(string imagePath, string ext)
         {
             // Audio files → instruction-audio/

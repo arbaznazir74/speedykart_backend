@@ -335,39 +335,21 @@ namespace Siffrum.Ecom.BAL.LoginUsers
                 var response = _mapper.Map<SellerSM>(dm);
                 if (!string.IsNullOrEmpty(response.Logo))
                 {
-                    var imgPath = await _imageProcess.ConvertToBase64(response.Logo);
-                    if (!string.IsNullOrEmpty(imgPath)) 
-                    { 
-                        response.Logo = imgPath;
-                    }
-                    else
-                    {
-                        response.Logo = null;
-                    }
+                    var logoImg = await _imageProcess.ResolveImage(response.Logo);
+                    response.Logo = logoImg.Base64;
+                    response.NetworkLogo = logoImg.NetworkUrl;
                 }
                 if (!string.IsNullOrEmpty(response.NationalIdentityCard))
                 {
-                    var cardBase64 = await _imageProcess.ConvertToBase64(response.NationalIdentityCard);
-                    if (!string.IsNullOrEmpty(cardBase64))
-                    {
-                        response.NationalIdentityCard = cardBase64;
-                    }
-                    else
-                    {
-                        response.NationalIdentityCard = null;
-                    }
+                    var cardImg = await _imageProcess.ResolveImage(response.NationalIdentityCard);
+                    response.NationalIdentityCard = cardImg.Base64;
+                    response.NetworkNationalIdentityCard = cardImg.NetworkUrl;
                 }
                 if (!string.IsNullOrEmpty(response.AddressProof))
                 {
-                    var addProofBase64 = await _imageProcess.ConvertToBase64(response.AddressProof);
-                    if (!string.IsNullOrEmpty(addProofBase64))
-                    {
-                        response.AddressProof = addProofBase64;
-                    }
-                    else
-                    {
-                        response.AddressProof = null;
-                    }
+                    var proofImg = await _imageProcess.ResolveImage(response.AddressProof);
+                    response.AddressProof = proofImg.Base64;
+                    response.NetworkAddressProof = proofImg.NetworkUrl;
                 }
                 response.Password = null;
                 return response;
@@ -394,39 +376,21 @@ namespace Siffrum.Ecom.BAL.LoginUsers
                 var response = _mapper.Map<SellerSM>(dm);
                 if (!string.IsNullOrEmpty(response.Logo))
                 {
-                    var imgPath = await _imageProcess.ConvertToBase64(response.Logo);
-                    if (!string.IsNullOrEmpty(imgPath)) 
-                    { 
-                        response.Logo = imgPath;
-                    }
-                    else
-                    {
-                        response.Logo = null;
-                    }
+                    var logoImg = await _imageProcess.ResolveImage(response.Logo);
+                    response.Logo = logoImg.Base64;
+                    response.NetworkLogo = logoImg.NetworkUrl;
                 }
                 if (!string.IsNullOrEmpty(response.NationalIdentityCard))
                 {
-                    var cardBase64 = await _imageProcess.ConvertToBase64(response.NationalIdentityCard);
-                    if (!string.IsNullOrEmpty(cardBase64)) 
-                    { 
-                        response.NationalIdentityCard = cardBase64;
-                    }
-                    else
-                    {
-                        response.NationalIdentityCard = null;
-                    }
+                    var cardImg = await _imageProcess.ResolveImage(response.NationalIdentityCard);
+                    response.NationalIdentityCard = cardImg.Base64;
+                    response.NetworkNationalIdentityCard = cardImg.NetworkUrl;
                 }
                 if (!string.IsNullOrEmpty(response.AddressProof))
                 {
-                    var addProofBase64 = await _imageProcess.ConvertToBase64(response.AddressProof);
-                    if (!string.IsNullOrEmpty(addProofBase64)) 
-                    { 
-                        response.AddressProof = addProofBase64;
-                    }
-                    else
-                    {
-                        response.AddressProof = null;
-                    }
+                    var proofImg = await _imageProcess.ResolveImage(response.AddressProof);
+                    response.AddressProof = proofImg.Base64;
+                    response.NetworkAddressProof = proofImg.NetworkUrl;
                 }
                 response.Password = null;
                 return response;

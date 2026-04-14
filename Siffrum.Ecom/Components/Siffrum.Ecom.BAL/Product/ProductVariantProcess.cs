@@ -389,11 +389,7 @@ namespace Siffrum.Ecom.BAL.Product
                     : 0m;
             ratings.TryGetValue(product.Id, out var ratingData);
             nutritions.TryGetValue(product.Id, out var nutritionData);
-            string imageBase64 = null;
-            if (!string.IsNullOrEmpty(product.Image))
-            {
-                imageBase64 = await _imageProcess.ConvertToBase64(product.Image);
-            }
+            var img = await _imageProcess.ResolveImage(product.Image);
             bool isFreshArrival = product.CreatedAt >= DateTime.UtcNow.AddDays(-3);
             bool isBestSeller = orderCounts > 10;
             return new UserHotBoxProductSM
@@ -401,7 +397,8 @@ namespace Siffrum.Ecom.BAL.Product
                 Id = product.Id,
                 Name = product.Name,
                 Description = product.Description,
-                ImageBase64 = imageBase64,
+                ImageBase64 = img.Base64,
+                NetworkImage = img.NetworkUrl,
                 DiscountedPercentage = discountPercentage,
                 DiscountedPrice = product.DiscountedPrice,
                 Rate = (short)Math.Round(ratingData?.AverageRating ?? 0),
@@ -723,12 +720,7 @@ namespace Siffrum.Ecom.BAL.Product
 
                 ratings.TryGetValue(product.Id, out var ratingData);
 
-                string imageBase64 = null;
-
-                if (!string.IsNullOrEmpty(product.Image))
-                {
-                    imageBase64 = await _imageProcess.ConvertToBase64(product.Image);
-                }
+                var img = await _imageProcess.ResolveImage(product.Image);
                 orderCounts.TryGetValue(product.Id, out var orderData);
                 tags.TryGetValue(product.Id, out var tagList);
                 bool isFreshArrival = product.CreatedAt >= DateTime.UtcNow.AddDays(-3);
@@ -740,7 +732,8 @@ namespace Siffrum.Ecom.BAL.Product
                     Price = product.Price,
                     Description = product.Description,
                     DiscountedPrice = product.DiscountedPrice,
-                    ImageBase64 = imageBase64,
+                    ImageBase64 = img.Base64,
+                    NetworkImage = img.NetworkUrl,
                     DiscountedPercentage = discountPercentage,
                     Rate = (short)Math.Round(ratingData?.AverageRating ?? 0),
                     ProductTags = tagList ?? new List<ProductTagSM>(),
@@ -849,12 +842,7 @@ namespace Siffrum.Ecom.BAL.Product
                 ratings.TryGetValue(product.Id, out var ratingData);
                 nutritions.TryGetValue(product.Id, out var nutritionData);
 
-                string imageBase64 = null;
-
-                if (!string.IsNullOrEmpty(product.Image))
-                {
-                    imageBase64 = await _imageProcess.ConvertToBase64(product.Image);
-                }
+                var img = await _imageProcess.ResolveImage(product.Image);
                 orderCounts.TryGetValue(product.Id, out var orderData);
                 tags.TryGetValue(product.Id, out var tagList);
                 bool isFreshArrival = product.CreatedAt >= DateTime.UtcNow.AddDays(-3);
@@ -866,9 +854,7 @@ namespace Siffrum.Ecom.BAL.Product
                 {
                     foreach (var v in siblings)
                     {
-                        string vImg = null;
-                        if (!string.IsNullOrEmpty(v.Image))
-                            vImg = await _imageProcess.ConvertToBase64(v.Image);
+                        var vImg = await _imageProcess.ResolveImage(v.Image);
                         variantList.Add(new VariantInfoSM
                         {
                             Id = v.Id,
@@ -876,7 +862,8 @@ namespace Siffrum.Ecom.BAL.Product
                             Price = v.Price,
                             DiscountedPrice = v.DiscountedPrice,
                             Stock = v.Stock,
-                            ImageBase64 = vImg
+                            ImageBase64 = vImg.Base64,
+                            NetworkImage = vImg.NetworkUrl
                         });
                     }
                 }
@@ -885,7 +872,8 @@ namespace Siffrum.Ecom.BAL.Product
                 {
                     Id = product.Id,
                     Name = product.Product?.Name ?? product.Name,
-                    ImageBase64 = imageBase64,
+                    ImageBase64 = img.Base64,
+                    NetworkImage = img.NetworkUrl,
                     Description = product.Description,
                     DiscountedPercentage = discountPercentage,
                     DiscountedPrice = product.DiscountedPrice,
@@ -1399,11 +1387,9 @@ namespace Siffrum.Ecom.BAL.Product
             sm.SellerId = dm?.Product?.SellerId ?? 0;
             if (!string.IsNullOrEmpty(dm.Image))
             {
-                var base64 = await _imageProcess.ConvertToBase64(dm.Image);
-                if (!string.IsNullOrEmpty(base64))
-                {
-                    sm.ImageBase64 = base64;
-                }
+                var img = await _imageProcess.ResolveImage(dm.Image);
+                sm.ImageBase64 = img.Base64;
+                sm.NetworkImage = img.NetworkUrl;
             }
             return sm;
         }
@@ -1540,11 +1526,7 @@ namespace Siffrum.Ecom.BAL.Product
             var result = new List<VariantInfoSM>();
             foreach (var v in siblings)
             {
-                string imageBase64 = null;
-                if (!string.IsNullOrEmpty(v.Image))
-                {
-                    imageBase64 = await _imageProcess.ConvertToBase64(v.Image);
-                }
+                var vImg = await _imageProcess.ResolveImage(v.Image);
                 unitNames.TryGetValue(v.Id, out var uName);
                 result.Add(new VariantInfoSM
                 {
@@ -1554,7 +1536,8 @@ namespace Siffrum.Ecom.BAL.Product
                     DiscountedPrice = v.DiscountedPrice,
                     Stock = v.Stock,
                     UnitName = uName,
-                    ImageBase64 = imageBase64,
+                    ImageBase64 = vImg.Base64,
+                    NetworkImage = vImg.NetworkUrl,
                 });
             }
             return result;
@@ -1604,13 +1587,15 @@ namespace Siffrum.Ecom.BAL.Product
             {
                 MainProductId = mainProduct.Id,
                 Name = mainProduct.Name,
-                Image = !string.IsNullOrEmpty(mainProduct.Image) ? await _imageProcess.ConvertToBase64(mainProduct.Image) : null,
                 Price = mainProduct.Price,
                 AllowedQuantity = (int)mainProduct.TotalAllowedQuantity,
                 Stock = (int)mainProduct.Stock,
                 IsCodAllowed = mainProduct.IsCodAllowed,
                 CategoryId = mainProduct.CategoryId,
             };
+            var mainImg = await _imageProcess.ResolveImage(mainProduct.Image);
+            response.Image = mainImg.Base64;
+            response.NetworkImage = mainImg.NetworkUrl;
 
             var categories = data
                 .GroupBy(x => new { x.CategoryId, x.CategoryName })
@@ -1630,13 +1615,15 @@ namespace Siffrum.Ecom.BAL.Product
                     {
                         ProductVariantId = p.AddonProductId,
                         Name = p.ProductName,
-                        Image = !string.IsNullOrEmpty(p.ProductImage) ? await _imageProcess.ConvertToBase64(p.ProductImage) : null,
                         Price = p.Price,
                         AllowedQuantity = (int)p.AllowedQuantity,
                         Stock = (int)p.Stock,
                         IsCodAllowed = p.IsCodAllowed,
                         CategoryId = p.CategoryId,
                     });
+                    var pImg = await _imageProcess.ResolveImage(p.ProductImage);
+                    category.Products.Last().Image = pImg.Base64;
+                    category.Products.Last().NetworkImage = pImg.NetworkUrl;
                 }
 
                 response.Categories.Add(category);

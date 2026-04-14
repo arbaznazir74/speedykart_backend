@@ -12,6 +12,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string Title { get; set; }
         public string SubTitle { get; set; }
         public string ContentBase64 { get; set; }
+        public string? NetworkContent { get; set; }
 
         public string? SliderUrl { get; set; }
 

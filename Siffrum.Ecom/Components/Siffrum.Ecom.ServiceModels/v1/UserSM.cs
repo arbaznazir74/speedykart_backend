@@ -16,6 +16,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string? EmailVerificationCode { get; set; }
 
         public string? Image { get; set; }
+        public string? NetworkImage { get; set; }
 
         public string? CountryCode { get; set; }
 

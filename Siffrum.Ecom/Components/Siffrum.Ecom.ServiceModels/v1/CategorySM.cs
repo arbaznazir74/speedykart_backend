@@ -12,6 +12,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string? Subtitle { get; set; }
 
         public string? ImageBase64 { get; set; }
+        public string? NetworkImage { get; set; }
 
         public PlatformTypeSM? Platform { get; set; }
         public CategoryTimingSM? Timings { get; set; }
@@ -28,6 +29,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string? MetaDescription { get; set; }
 
         public string? WebImage { get; set; }
+        public string? NetworkWebImage { get; set; }
 
         public bool IsSystem { get; set; }
         public int Level { get; set; } = 1;

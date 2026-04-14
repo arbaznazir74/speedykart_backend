@@ -7,6 +7,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public long UserId { get; set; }
 
         public string? AudioBase64 { get; set; }
+        public string? NetworkAudio { get; set; }
 
         public bool AvoidCalling { get; set; }
 

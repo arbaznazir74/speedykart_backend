@@ -9,5 +9,6 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public decimal? Stock { get; set; }
         public string? UnitName { get; set; }
         public string? ImageBase64 { get; set; }
+        public string? NetworkImage { get; set; }
     }
 }

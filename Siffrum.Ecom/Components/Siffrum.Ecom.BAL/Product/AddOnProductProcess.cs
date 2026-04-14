@@ -153,7 +153,6 @@ namespace Siffrum.Ecom.BAL.Product
             {
                 MainProductId = mainProduct.Id,
                 Name = mainProduct.Name,
-                Image = await _imageProcess.ConvertToBase64(mainProduct.Image),
                 Price = mainProduct.Price,
                 DiscountedPrice = mainProduct.DiscountedPrice,
                 AllowedQuantity = (int)mainProduct.TotalAllowedQuantity,
@@ -161,6 +160,9 @@ namespace Siffrum.Ecom.BAL.Product
                 IsCodAllowed = mainProduct.IsCodAllowed,
                 CategoryId = mainProduct.CategoryId,
             };
+            var mainImg = await _imageProcess.ResolveImage(mainProduct.Image);
+            response.Image = mainImg.Base64;
+            response.NetworkImage = mainImg.NetworkUrl;
 
             var categories = data
                 .GroupBy(x => new { x.CategoryId, x.CategoryName })
@@ -180,7 +182,6 @@ namespace Siffrum.Ecom.BAL.Product
                     {
                         ProductVariantId = p.AddonProductId,
                         Name = p.ProductName,
-                        Image = await _imageProcess.ConvertToBase64(p.ProductImage),
                         Price = p.Price,
                         DiscountedPrice = p.DiscountedPrice,
                         AllowedQuantity = (int)p.AllowedQuantity,
@@ -188,6 +189,9 @@ namespace Siffrum.Ecom.BAL.Product
                         IsCodAllowed = p.IsCodAllowed,
                         CategoryId = p.CategoryId,
                     });
+                    var pImg = await _imageProcess.ResolveImage(p.ProductImage);
+                    category.Products.Last().Image = pImg.Base64;
+                    category.Products.Last().NetworkImage = pImg.NetworkUrl;
                 }
 
                 response.Categories.Add(category);

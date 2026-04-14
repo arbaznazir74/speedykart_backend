@@ -389,11 +389,13 @@ namespace Siffrum.Ecom.BAL.Product
                 // Step 2: Convert Base64 after data is loaded
                 foreach (var product in products)
                 {
+                    var cImg = await _imageProcess.ResolveImage(product.Image);
                     sm.ProductData.Add(new ProductImageDataSM
                     {
                         Id = product.Id,
                         Name = product.Name,
-                        ImageBase64 = await _imageProcess.ConvertToBase64(product.Image)
+                        ImageBase64 = cImg.Base64,
+                        NetworkImage = cImg.NetworkUrl
                     });
                 }
                 sm.Price = products.Sum(p => p.Price);

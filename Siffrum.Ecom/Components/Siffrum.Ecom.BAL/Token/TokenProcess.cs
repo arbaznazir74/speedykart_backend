@@ -175,11 +175,9 @@ namespace Siffrum.Ecom.BAL.Token
             {                
                 if (!string.IsNullOrEmpty(loginUserSM.Image))
                 {
-                    loginUserSM.Image = await _imageProcess.ConvertToBase64(loginUserSM.Image);
-                }
-                else
-                {
-                    loginUserSM.Image = null;
+                    var tImg = await _imageProcess.ResolveImage(loginUserSM.Image);
+                    loginUserSM.Image = tImg.Base64;
+                    loginUserSM.NetworkImage = tImg.NetworkUrl;
                 }
             }
             return (loginUserSM, adminId);

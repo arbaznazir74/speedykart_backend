@@ -112,7 +112,11 @@ namespace Siffrum.Ecom.BAL.Marketing
             var sm = _mapper.Map<PromotionalContentSM>(dm);
 
             if (!string.IsNullOrEmpty(dm.IconPath))
-                sm.IconBase64 = await _imageProcess.ConvertToBase64(dm.IconPath);
+            {
+                var pImg = await _imageProcess.ResolveImage(dm.IconPath);
+                sm.IconBase64 = pImg.Base64;
+                sm.NetworkIcon = pImg.NetworkUrl;
+            }
 
             return sm;
         }

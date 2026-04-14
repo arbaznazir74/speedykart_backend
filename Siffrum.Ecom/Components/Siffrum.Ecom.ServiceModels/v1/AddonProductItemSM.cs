@@ -8,6 +8,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public long ProductVariantId { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
+        public string? NetworkImage { get; set; }
         public decimal Price { get; set; }
         public decimal? DiscountedPrice { get; set; }
 

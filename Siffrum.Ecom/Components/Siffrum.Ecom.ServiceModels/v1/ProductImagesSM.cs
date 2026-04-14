@@ -7,5 +7,6 @@ namespace Siffrum.Ecom.ServiceModels.v1
         
         public long ProductVariantId { get; set; }
         public string ImageBase64 { get; set; }
+        public string? NetworkImage { get; set; }
     }
 }

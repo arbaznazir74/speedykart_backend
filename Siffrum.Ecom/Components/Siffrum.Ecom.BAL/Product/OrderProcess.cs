@@ -1034,15 +1034,12 @@ namespace Siffrum.Ecom.BAL.Product
                     : user?.Mobile;
             var variant = await _apiDbContext.ProductVariant.AsNoTracking().Where(x=>x.Id == dm.ProductVariantId).FirstOrDefaultAsync();
             var sm = _mapper.Map<OrderItemSM>(dm);
-            var imageBase64 = "";
-            if(variant != null)
+            if(variant != null && !string.IsNullOrEmpty(variant.Image))
             {
-                if (!string.IsNullOrEmpty(variant.Image))
-                {
-                    imageBase64 = await _imageProcess.ConvertToBase64(variant.Image);
-                }
+                var oImg = await _imageProcess.ResolveImage(variant.Image);
+                sm.ProductImage = oImg.Base64;
+                sm.NetworkProductImage = oImg.NetworkUrl;
             }
-            sm.ProductImage = imageBase64;
             sm.CustomerName = displayName;
             sm.ProductName = variant?.Name;
             sm.OrderStatus = (OrderStatusSM)order.OrderStatus;
@@ -1086,10 +1083,13 @@ namespace Siffrum.Ecom.BAL.Product
                 .Where(x => x.Id == dm.ProductVariantId)
                 .FirstOrDefaultAsync();
 
-            var imageBase64 = "";
+            string imageBase64 = null;
+            string networkVariantImage = null;
             if (variant != null && !string.IsNullOrEmpty(variant.Image))
             {
-                imageBase64 = await _imageProcess.ConvertToBase64(variant.Image);
+                var oImg = await _imageProcess.ResolveImage(variant.Image);
+                imageBase64 = oImg.Base64;
+                networkVariantImage = oImg.NetworkUrl;
             }
 
             // Parse toppings
@@ -1124,6 +1124,7 @@ namespace Siffrum.Ecom.BAL.Product
                 ProductVariantId = dm.ProductVariantId,
                 VariantName = variant?.Name,
                 VariantImageBase64 = imageBase64,
+                NetworkVariantImage = networkVariantImage,
                 Indicator = variant?.Indicator.ToString(),
                 Quantity = dm.Quantity,
                 UnitPrice = dm.UnitPrice,

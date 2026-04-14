@@ -8,6 +8,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string Name { get; set; }
         public string? Description { get; set; }
         public string PathBase64 { get; set; }
+        public string? NetworkPath { get; set; }
         public ExtensionTypeSM ExtensionType { get; set; }
         public PlatformTypeSM PlatformType { get; set; }
         public decimal? Percentage { get; set; }

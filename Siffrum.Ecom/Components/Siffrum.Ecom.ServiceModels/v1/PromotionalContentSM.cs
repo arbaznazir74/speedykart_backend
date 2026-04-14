@@ -8,6 +8,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string Title { get; set; }
 
         public string? IconBase64 { get; set; }
+        public string? NetworkIcon { get; set; }
 
         public PlatformTypeSM PlatformType { get; set; }
 

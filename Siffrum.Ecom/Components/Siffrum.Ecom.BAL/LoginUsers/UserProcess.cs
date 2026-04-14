@@ -358,15 +358,9 @@ namespace Siffrum.Ecom.BAL.LoginUsers
                 var sm = _mapper.Map<TokenUserSM>(existingUser);
                 if (!string.IsNullOrEmpty(existingUser.Image))
                 {
-                    var base64 = await _imageProcess.ConvertToBase64(existingUser.Image);
-                    if (!string.IsNullOrEmpty(base64))
-                    {
-                        sm.Image = base64;
-                    }
-                    else
-                    {
-                        sm.Image = null;
-                    }
+                    var uImg = await _imageProcess.ResolveImage(existingUser.Image);
+                    sm.Image = uImg.Base64;
+                    sm.NetworkImage = uImg.NetworkUrl;
                 }
                 return sm;
             }
@@ -560,15 +554,9 @@ namespace Siffrum.Ecom.BAL.LoginUsers
                 var response = _mapper.Map<UserSM>(dm);
                 if (!string.IsNullOrEmpty(response.Image))
                 {
-                    var imgPath = await _imageProcess.ConvertToBase64(response.Image);
-                    if (!string.IsNullOrEmpty(imgPath)) 
-                    { 
-                        response.Image = imgPath;
-                    }
-                    else
-                    {
-                        response.Image = null;
-                    }
+                    var uImg = await _imageProcess.ResolveImage(response.Image);
+                    response.Image = uImg.Base64;
+                    response.NetworkImage = uImg.NetworkUrl;
                 }
                 response.Password = null;
                 return response;
@@ -596,15 +584,9 @@ namespace Siffrum.Ecom.BAL.LoginUsers
                 var response = _mapper.Map<UserSM>(dm);
                 if (!string.IsNullOrEmpty(dm.Image))
                 {
-                    var imgPath = await _imageProcess.ConvertToBase64(response.Image);
-                    if (!string.IsNullOrEmpty(imgPath)) 
-                    { 
-                        response.Image = imgPath;
-                    }
-                    else
-                    {
-                        response.Image = null;
-                    }
+                    var uImg = await _imageProcess.ResolveImage(dm.Image);
+                    response.Image = uImg.Base64;
+                    response.NetworkImage = uImg.NetworkUrl;
                 }
                 response.Password = null;
                 return response;

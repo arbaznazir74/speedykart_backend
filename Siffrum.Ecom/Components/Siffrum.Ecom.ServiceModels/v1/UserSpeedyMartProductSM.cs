@@ -7,6 +7,7 @@
         public decimal Price { get; set; }
         public decimal? DiscountedPrice { get; set; }
         public string ImageBase64 { get; set; }
+        public string? NetworkImage { get; set; }
         public string? Description { get; set; }
         public decimal? DiscountedPercentage { get; set; }
         public int? TotalAllowedQuantity { get; set; }

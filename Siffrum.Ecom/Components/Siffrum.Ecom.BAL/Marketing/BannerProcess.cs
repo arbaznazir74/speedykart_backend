@@ -82,11 +82,9 @@ namespace Siffrum.Ecom.BAL.Marketing
             var sm = _mapper.Map<BannerSM>(dm);
             if (!string.IsNullOrEmpty(dm.ContentPath))
             {
-                var base64 = await _imageProcess.ConvertToBase64(dm.ContentPath);
-                if (!string.IsNullOrEmpty(base64))
-                {
-                    sm.ContentBase64 = base64;
-                }
+                var bImg = await _imageProcess.ResolveImage(dm.ContentPath);
+                sm.ContentBase64 = bImg.Base64;
+                sm.NetworkContent = bImg.NetworkUrl;
             }
             return sm;
         }
@@ -104,11 +102,9 @@ namespace Siffrum.Ecom.BAL.Marketing
             var sm = _mapper.Map<BannerSM>(dm);
             if (!string.IsNullOrEmpty(dm.ContentPath))
             {
-                var base64 = await _imageProcess.ConvertToBase64(dm.ContentPath);
-                if (!string.IsNullOrEmpty(base64))
-                {
-                    sm.ContentBase64 = base64;
-                }
+                var bImg = await _imageProcess.ResolveImage(dm.ContentPath);
+                sm.ContentBase64 = bImg.Base64;
+                sm.NetworkContent = bImg.NetworkUrl;
             }
             return sm;
         }

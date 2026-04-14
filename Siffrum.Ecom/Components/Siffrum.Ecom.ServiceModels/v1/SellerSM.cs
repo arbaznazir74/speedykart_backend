@@ -22,6 +22,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string? StoreUrl { get; set; }
 
         public string? Logo { get; set; }
+        public string? NetworkLogo { get; set; }
 
         public string? StoreDescription { get; set; }
 
@@ -56,8 +57,10 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string? FcmId { get; set; }
 
         public string? NationalIdentityCard { get; set; }
+        public string? NetworkNationalIdentityCard { get; set; }
 
         public string? AddressProof { get; set; }
+        public string? NetworkAddressProof { get; set; }
 
         public string? PanNumber { get; set; }
 

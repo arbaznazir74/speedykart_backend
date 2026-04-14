@@ -36,6 +36,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public bool IsCancelable { get; set; }
 
         public string? ImageBase64 { get; set; }
+        public string? NetworkImage { get; set; }
         public string Description { get; set; } 
 
         public PlatformTypeSM PlatformType { get; set; } 

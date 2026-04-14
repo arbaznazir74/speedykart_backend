@@ -144,15 +144,9 @@ namespace Siffrum.Ecom.BAL.Product
                 var sm = _mapper.Map<BrandSM>(dm);
                 if (!string.IsNullOrEmpty(dm.Image))
                 {
-                    var imageBase64 = await _imageProcess.ConvertToBase64(dm.Image);
-                    if (!string.IsNullOrEmpty(imageBase64))
-                    {
-                        sm.Image = imageBase64;
-                    }
-                    else
-                    {
-                        sm.Image = null; 
-                    }
+                    var bImg = await _imageProcess.ResolveImage(dm.Image);
+                    sm.Image = bImg.Base64;
+                    sm.NetworkImage = bImg.NetworkUrl;
                 }
                 return sm;
 

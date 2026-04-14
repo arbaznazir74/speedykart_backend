@@ -30,14 +30,17 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string? DrivingLicense { get; set; }
 
         public string? DrivingLicensePhoto { get; set; }
+        public string? NetworkDrivingLicensePhoto { get; set; }
 
         public string? NationalIdentityCard { get; set; }
 
         public string? AadhaarNumber { get; set; }
 
         public string? AadhaarPhoto { get; set; }
+        public string? NetworkAadhaarPhoto { get; set; }
 
         public string? PassportPhoto { get; set; }
+        public string? NetworkPassportPhoto { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
 

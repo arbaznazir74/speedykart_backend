@@ -8,6 +8,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string Name { get; set; }
 
         public string? Image { get; set; } = null!;
+        public string? NetworkImage { get; set; }
 
         public StatusSM Status { get; set; }
     }
