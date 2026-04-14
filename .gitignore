@@ -7,6 +7,10 @@
 **/appsettings.json
 **/appsettings.Development.json
 **/firebase/firebase.json
+!**/appsettings.Template.json
+.env
+.env.*
+!.env.example
 
 *.mdb
 OutPackages/

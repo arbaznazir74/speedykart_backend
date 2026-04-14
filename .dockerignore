@@ -1,0 +1,10 @@
+.git
+.gitignore
+Dockerfile
+.dockerignore
+**/bin
+**/obj
+**/out
+**/.vs
+*.md
+test.txt
