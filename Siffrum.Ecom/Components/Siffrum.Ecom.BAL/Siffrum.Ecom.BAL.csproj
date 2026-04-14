@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Azure.AI.TextAnalytics" Version="5.3.0" />
+    <PackageReference Include="FirebaseAdmin" Version="3.4.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.5.0" />
+    <PackageReference Include="Razorpay" Version="3.3.2" />
+    <PackageReference Include="Stripe.net" Version="44.4.0" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	  <PackageReference Include="System.IO" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Siffrum.Ecom.Config\Siffrum.Ecom.Config.csproj" />
+    <ProjectReference Include="..\Siffrum.Ecom.DAL\Siffrum.Ecom.DAL.csproj" />
+    <ProjectReference Include="..\Siffrum.Ecom.DomainModels\Siffrum.Ecom.DomainModels.csproj" />
+    <ProjectReference Include="..\Siffrum.Ecom.ServiceModels\Siffrum.Ecom.ServiceModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Clients\" />
+  </ItemGroup>
+
+</Project>

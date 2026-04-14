@@ -1,0 +1,761 @@
+Exception occured while logging Error IN DB - 
+ Message -  A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No connection could be made because the target machine actively refused it.) 
+ Stacktrace -     at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at CoreVisionDAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionDAL\Foundation\ErrorLogDALRoot.cs:line 108
+   at CoreVisionBAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at CoreVisionBAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.) 
+ Stacktrace -     at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at CoreVisionDAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionDAL\Foundation\ErrorLogDALRoot.cs:line 108
+   at CoreVisionBAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at CoreVisionBAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SNI_PN11, error: 26 - Error Locating Server/Instance Specified) 
+ Stacktrace -     at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at CoreVisionDAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionDAL\Foundation\ErrorLogDALRoot.cs:line 108
+   at CoreVisionBAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at CoreVisionBAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No connection could be made because the target machine actively refused it.) 
+ Stacktrace -     at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at CoreVisionDAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionDAL\Foundation\ErrorLogDALRoot.cs:line 108
+   at CoreVisionBAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at CoreVisionBAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No connection could be made because the target machine actively refused it.) 
+ Stacktrace -     at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at CoreVisionDAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionDAL\Foundation\ErrorLogDALRoot.cs:line 108
+   at CoreVisionBAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at CoreVisionBAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Personal-Projects\CoreVision\CoreVision\Components\CoreVisionBAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Important-Data\Personal-Projects\ECOM\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Format of the initialization string does not conform to specification starting at index 0. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.GetKeyValuePair(String connectionString, Int32 currentPosition, StringBuilder buffer, Boolean useOdbcRules, String& keyname, String& keyvalue)
+   at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Keyword not supported: 'host'. 
+ Stacktrace -     at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array/range. See the Npgsql.EnableLegacyTimestampBehavior AppContext switch to enable legacy behavior. 
+ Stacktrace -     at Npgsql.Internal.TypeHandlers.DateTimeHandlers.TimestampHandler.ValidateAndGetLength(DateTime value, NpgsqlParameter parameter)
+   at Npgsql.Internal.TypeHandlers.DateTimeHandlers.TimestampHandler.ValidateObjectAndGetLength(Object value, NpgsqlLengthCache& lengthCache, NpgsqlParameter parameter)
+   at Npgsql.NpgsqlParameter.ValidateAndGetLength()
+   at Npgsql.NpgsqlParameterCollection.ValidateAndBind(ConnectorTypeMapper typeMapper)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 99
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 99
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 99
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  No such host is known. 
+ Stacktrace -     at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at System.Net.Dns.<GetAddrInfoWithTelemetryAsync>g__CompleteAsync|34_0[T](Task task, String hostName, ValueStopwatch stopwatch)
+   at Npgsql.TaskExtensions.ExecuteWithTimeout[TResult](Func`2 func, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithCancellation[T](Task`1 task, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithTimeout[T](Task`1 task, NpgsqlTimeout timeout)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  No such host is known. 
+ Stacktrace -     at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at System.Net.Dns.<GetAddrInfoWithTelemetryAsync>g__CompleteAsync|34_0[T](Task task, String hostName, ValueStopwatch stopwatch)
+   at Npgsql.TaskExtensions.ExecuteWithTimeout[TResult](Func`2 func, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithCancellation[T](Task`1 task, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithTimeout[T](Task`1 task, NpgsqlTimeout timeout)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  The requested name is valid, but no data of the requested type was found. 
+ Stacktrace -     at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at System.Net.Dns.<GetAddrInfoWithTelemetryAsync>g__CompleteAsync|34_0[T](Task task, String hostName, ValueStopwatch stopwatch)
+   at Npgsql.TaskExtensions.ExecuteWithTimeout[TResult](Func`2 func, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithCancellation[T](Task`1 task, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithTimeout[T](Task`1 task, NpgsqlTimeout timeout)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  3D000: database "testingecom" does not exist 
+ Stacktrace -     at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|213_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  No such host is known. 
+ Stacktrace -     at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at System.Net.Dns.<GetAddrInfoWithTelemetryAsync>g__CompleteAsync|34_0[T](Task task, String hostName, ValueStopwatch stopwatch)
+   at Npgsql.TaskExtensions.ExecuteWithTimeout[TResult](Func`2 func, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithCancellation[T](Task`1 task, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithTimeout[T](Task`1 task, NpgsqlTimeout timeout)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  No such host is known. 
+ Stacktrace -     at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at System.Net.Dns.<GetAddrInfoWithTelemetryAsync>g__CompleteAsync|34_0[T](Task task, String hostName, ValueStopwatch stopwatch)
+   at Npgsql.TaskExtensions.ExecuteWithTimeout[TResult](Func`2 func, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithCancellation[T](Task`1 task, CancellationToken cancellationToken)
+   at Npgsql.TaskExtensions.WithTimeout[T](Task`1 task, NpgsqlTimeout timeout)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Failed to connect to 143.110.250.248:18894 
+ Stacktrace -     at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  3D000: database "ecomtest" does not exist 
+ Stacktrace -     at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|213_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Failed to connect to 143.110.250.248:18894 
+ Stacktrace -     at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  3D000: database "testecomdb" does not exist 
+ Stacktrace -     at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|213_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|193_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|31_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Input string was not in a correct format. 
+ Stacktrace -     at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at Npgsql.NpgsqlConnectionStringBuilder.TrySplitHostPort(ReadOnlySpan`1 originalHost, String& host, Int32& port)
+   at Npgsql.NpgsqlConnection.GetPoolAndSettings()
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Failed to connect to 35.154.247.166:5432 
+ Stacktrace -     at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|203_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|28_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Failed to connect to 35.154.247.166:5432 
+ Stacktrace -     at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|203_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|28_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  Couldn't set multipleactiveresultsets (Parameter 'multipleactiveresultsets') 
+ Stacktrace -     at Npgsql.NpgsqlConnectionStringBuilder.set_Item(String keyword, Object value)
+   at System.Data.Common.DbConnectionStringBuilder.set_ConnectionString(String value)
+   at Npgsql.NpgsqlConnection.GetPoolAndSettings()
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 18
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\Foundation\ErrorLogProcessRoot.cs:line 29
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.BAL\ExceptionHandler\ErrorLogHandlerRoot.cs:line 80Exception occured while logging Error IN DB - 
+ Message -  The operation has timed out. 
+ Stacktrace -     at Npgsql.Util.NpgsqlTimeout.CheckAndGetTimeLeft()
+   at Npgsql.TaskExtensions.WithTimeout[T](Task`1 task, NpgsqlTimeout timeout)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|203_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|28_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 101
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.DAL.Foundation.ErrorLogDALRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog) in D:\Siffrum\Ecom\work-station-backend\Siffrum.Ecom\Components\Siffrum.Ecom.DAL\Foundation\ErrorLogDALRoot.cs:line 103
+   at Siffrum.Ecom.BAL.Foundation.ErrorLogProcessRoot.SaveErrorObjectInDb(ErrorLogRoot errorLog)
+   at Siffrum.Ecom.BAL.ExceptionHandler.ErrorLogHandlerRoot.LogExceptionInDb(Exception ex, HttpContext currentContext)
