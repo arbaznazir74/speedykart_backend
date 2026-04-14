@@ -127,6 +127,8 @@ namespace Siffrum.Ecom.BAL.Product
                 await _apiDbContext.SaveChangesAsync();
 
                 await transaction.CommitAsync();
+
+                // Notify delivery boy
                 if (!string.IsNullOrEmpty(deliveryBoy.FcmId))
                 {
                     var msg = new SendNotificationMessageSM()
@@ -136,6 +138,43 @@ namespace Siffrum.Ecom.BAL.Product
                     };
                     await _notificationProcess.SendPushNotificationByPlayerId(deliveryBoy.FcmId, msg);
                 }
+
+                // Notify user about delivery assignment
+                try
+                {
+                    var user = await _apiDbContext.User.AsNoTracking()
+                        .FirstOrDefaultAsync(u => u.Id == order.UserId);
+                    if (user != null && !string.IsNullOrEmpty(user.FcmId))
+                    {
+                        await _notificationProcess.SendPushNotificationToUser(
+                            new SendNotificationMessageSM
+                            {
+                                Title = "Delivery Boy Assigned",
+                                Message = $"A delivery boy has been assigned to your order #{order.OrderNumber ?? order.Id.ToString()}."
+                            }, user.FcmId);
+                    }
+                }
+                catch { }
+
+                // Notify seller about delivery assignment
+                try
+                {
+                    if (order.SellerId.HasValue)
+                    {
+                        var seller = await _apiDbContext.Seller.AsNoTracking()
+                            .FirstOrDefaultAsync(s => s.Id == order.SellerId.Value);
+                        if (seller != null && !string.IsNullOrEmpty(seller.FcmId))
+                        {
+                            await _notificationProcess.SendPushNotificationByPlayerId(seller.FcmId,
+                                new SendNotificationMessageSM
+                                {
+                                    Title = "Delivery Boy Assigned",
+                                    Message = $"Delivery boy {deliveryBoy.Name} has been assigned to order #{order.OrderNumber ?? order.Id.ToString()}."
+                                });
+                        }
+                    }
+                }
+                catch { }
 
                 return await GetDeliveryById(dm.Id);
             }

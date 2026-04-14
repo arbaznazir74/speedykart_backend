@@ -834,6 +834,36 @@ namespace Siffrum.Ecom.BAL.Product
             order.UpdatedBy = _loginUserDetail.LoginId;
             await _apiDbContext.SaveChangesAsync();
 
+            // Notify user about order status change
+            try
+            {
+                var user = await _apiDbContext.User.AsNoTracking()
+                    .FirstOrDefaultAsync(u => u.Id == order.UserId);
+                if (user != null && !string.IsNullOrEmpty(user.FcmId))
+                {
+                    var statusText = status switch
+                    {
+                        OrderStatusSM.Processing => "is being processed",
+                        OrderStatusSM.SellerAccepted => "has been accepted by the seller",
+                        OrderStatusSM.Assigned => "has been assigned for delivery",
+                        OrderStatusSM.PickedUp => "has been picked up",
+                        OrderStatusSM.OutForDelivery => "is out for delivery",
+                        OrderStatusSM.Delivered => "has been delivered",
+                        OrderStatusSM.Cancelled => "has been cancelled",
+                        OrderStatusSM.CancelledBySeller => "has been cancelled by the seller",
+                        OrderStatusSM.Failed => "delivery has failed",
+                        _ => $"status updated to {status}"
+                    };
+                    await _notificationProcess.SendPushNotificationToUser(
+                        new SendNotificationMessageSM
+                        {
+                            Title = "Order Update",
+                            Message = $"Your order #{order.OrderNumber ?? order.Id.ToString()} {statusText}."
+                        }, user.FcmId);
+                }
+            }
+            catch { }
+
             return new BoolResponseRoot(true, "Order status updated");
         }
 
@@ -892,6 +922,26 @@ namespace Siffrum.Ecom.BAL.Product
             await RestoreStockForOrder(order.Id);
 
             await _apiDbContext.SaveChangesAsync();
+
+            // Notify seller about user cancellation
+            try
+            {
+                if (order.SellerId.HasValue)
+                {
+                    var seller = await _apiDbContext.Seller.AsNoTracking()
+                        .FirstOrDefaultAsync(s => s.Id == order.SellerId.Value);
+                    if (seller != null && !string.IsNullOrEmpty(seller.FcmId))
+                    {
+                        await _notificationProcess.SendPushNotificationByPlayerId(seller.FcmId,
+                            new SendNotificationMessageSM
+                            {
+                                Title = "Order Cancelled by Customer",
+                                Message = $"Order #{order.OrderNumber ?? order.Id.ToString()} has been cancelled by the customer."
+                            });
+                    }
+                }
+            }
+            catch { }
 
             return new BoolResponseRoot(true, "Order cancelled successfully");
         }

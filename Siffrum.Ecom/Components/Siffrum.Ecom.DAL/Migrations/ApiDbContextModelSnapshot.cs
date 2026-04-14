@@ -3815,6 +3815,58 @@ namespace Siffrum.Ecom.DAL.Migrations
                     b.ToTable("UserSupportRequest");
                 });
 
+            modelBuilder.Entity("Siffrum.Ecom.DomainModels.v1.UserSupportReplyDM", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text")
+                        .HasColumnName("created_by");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)")
+                        .HasColumnName("message");
+
+                    b.Property<long>("SenderId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("sender_id");
+
+                    b.Property<string>("SenderRole")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
+                        .HasColumnName("sender_role");
+
+                    b.Property<long>("SupportRequestId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("support_request_id");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("text")
+                        .HasColumnName("updated_by");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SupportRequestId");
+
+                    b.ToTable("user_support_replies");
+                });
+
             modelBuilder.Entity("Siffrum.Ecom.DomainModels.v1.AddOnProductsDM", b =>
                 {
                     b.HasOne("Siffrum.Ecom.DomainModels.v1.ProductVariantDM", "AddOnProduct")
@@ -4453,6 +4505,17 @@ namespace Siffrum.Ecom.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Siffrum.Ecom.DomainModels.v1.UserSupportReplyDM", b =>
+                {
+                    b.HasOne("Siffrum.Ecom.DomainModels.v1.UserSupportRequestDM", "SupportRequest")
+                        .WithMany()
+                        .HasForeignKey("SupportRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SupportRequest");
                 });
 
             modelBuilder.Entity("Siffrum.Ecom.DomainModels.v1.AdminDM", b =>

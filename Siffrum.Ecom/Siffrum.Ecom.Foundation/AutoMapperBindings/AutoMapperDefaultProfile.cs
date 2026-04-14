@@ -82,6 +82,7 @@ namespace Siffrum.Ecom.Foundation.AutoMapperBindings
                 .ForMember(dest => dest.Topping, opt => opt.Ignore());
             CreateMap<OrderComplaintDM, OrderComplaintSM>().ReverseMap();
             CreateMap<CashCollectionDM, CashCollectionSM>().ReverseMap();
+            CreateMap<UserSupportReplyDM, UserSupportReplySM>().ReverseMap();
 
         }
     }

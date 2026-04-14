@@ -46,9 +46,12 @@ namespace Siffrum.Ecom.BAL.Base.ImageProcess
             imageExtension = imageExtension?.Trim().Replace(".", "").ToLower();
             byte[] fileBytes = Convert.FromBase64String(base64String);
 
-            int maxSize = (imageExtension == "mp4" || imageExtension == "svg" || imageExtension == "mp3" || imageExtension == "m4a")
-                ? 10 * 1024 * 1024
-                : 2 * 1024 * 1024;
+            int maxSize = imageExtension switch
+            {
+                "mp4" => 6 * 1024 * 1024,
+                "svg" or "mp3" or "m4a" => 10 * 1024 * 1024,
+                _ => 4 * 1024 * 1024
+            };
 
             if (fileBytes.Length > maxSize)
             {

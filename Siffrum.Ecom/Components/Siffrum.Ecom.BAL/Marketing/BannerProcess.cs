@@ -41,6 +41,11 @@ namespace Siffrum.Ecom.BAL.Marketing
         #endregion
 
         #region CREATE
+        private static readonly HashSet<ExtensionTypeSM> AllowedBannerExtensions = new()
+        {
+            ExtensionTypeSM.JPG, ExtensionTypeSM.JPEG, ExtensionTypeSM.PNG, ExtensionTypeSM.MP4
+        };
+
         public async Task<BoolResponseRoot> CreateAsync(BannerSM objSM)
         {
             if (objSM == null)
@@ -48,6 +53,13 @@ namespace Siffrum.Ecom.BAL.Marketing
                     ApiErrorTypeSM.ModelError_NoLog,
                     "Banner data is required"
                 );
+
+            if (!AllowedBannerExtensions.Contains(objSM.Extension))
+                throw new SiffrumException(
+                    ApiErrorTypeSM.InvalidInputData_NoLog,
+                    "Only JPG, JPEG, PNG images (max 4 MB) and MP4 videos (max 6 MB) are allowed for banners"
+                );
+
             var dm = _mapper.Map<BannerDM>(objSM);
             if (!string.IsNullOrEmpty(objSM.ContentBase64))
             {
@@ -219,13 +231,11 @@ namespace Siffrum.Ecom.BAL.Marketing
             string oldImage = null;
             if (!string.IsNullOrEmpty(objSM.ContentBase64))
             {
-                if(objSM.Extension == null)
-                {
+                if (!AllowedBannerExtensions.Contains(objSM.Extension))
                     throw new SiffrumException(
                         ApiErrorTypeSM.InvalidInputData_NoLog,
-                        "Extension not found"
+                        "Only JPG, JPEG, PNG images (max 4 MB) and MP4 videos (max 6 MB) are allowed for banners"
                     );
-                }
                 var imagePath = await _imageProcess.SaveFromBase64(objSM.ContentBase64, objSM.Extension.ToString().ToLower(), "wwwroot/content/banners");
                 if (!string.IsNullOrEmpty(imagePath))
                 {

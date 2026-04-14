@@ -76,6 +76,7 @@ namespace Siffrum.Ecom.DAL.Context
         public DbSet<DeliveryBoyPincodesDM> DeliveryBoyPincodes { get; set; }
         public DbSet<DeliveryRequestDM> DeliveryRequest { get; set; }
         public DbSet<UserSupportRequestDM> UserSupportRequest { get; set; }
+        public DbSet<UserSupportReplyDM> UserSupportReply { get; set; }
         public DbSet<SettingsDM> Settings { get; set; }
         public DbSet<SellerSettingsDM> SellerSettings { get; set; }
         public DbSet<ToppingDM> Topping { get; set; }

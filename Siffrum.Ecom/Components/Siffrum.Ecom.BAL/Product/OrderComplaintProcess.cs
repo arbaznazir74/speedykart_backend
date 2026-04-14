@@ -8,14 +8,21 @@ using Siffrum.Ecom.DomainModels.v1;
 using Siffrum.Ecom.ServiceModels.Enums;
 using Siffrum.Ecom.ServiceModels.Foundation.Base.CommonResponseRoot;
 using Siffrum.Ecom.ServiceModels.Foundation.Base.Enums;
+using Siffrum.Ecom.BAL.Base.OneSignal;
+using Siffrum.Ecom.ServiceModels.AppUser.Login;
 using Siffrum.Ecom.ServiceModels.v1;
 
 namespace Siffrum.Ecom.BAL.Product
 {
     public class OrderComplaintProcess : SiffrumBalBase
     {
-        public OrderComplaintProcess(IMapper mapper, ApiDbContext apiDbContext)
-            : base(mapper, apiDbContext) { }
+        private readonly NotificationProcess _notificationProcess;
+
+        public OrderComplaintProcess(IMapper mapper, ApiDbContext apiDbContext, NotificationProcess notificationProcess)
+            : base(mapper, apiDbContext)
+        {
+            _notificationProcess = notificationProcess;
+        }
 
         #region User - Submit Complaint
 
@@ -126,6 +133,25 @@ namespace Siffrum.Ecom.BAL.Product
             complaint.UpdatedAt = DateTime.UtcNow;
 
             await _apiDbContext.SaveChangesAsync();
+
+            // Notify user about complaint reply
+            try
+            {
+                var user = await _apiDbContext.User.AsNoTracking()
+                    .FirstOrDefaultAsync(u => u.Id == complaint.UserId);
+                if (user != null && !string.IsNullOrEmpty(user.FcmId))
+                {
+                    var statusText = status == ComplaintStatusSM.Resolved ? "resolved" : "updated";
+                    await _notificationProcess.SendPushNotificationToUser(
+                        new SendNotificationMessageSM
+                        {
+                            Title = $"Complaint {statusText}",
+                            Message = $"Your complaint for order #{complaint.OrderId} has been {statusText}. Seller replied: \"{reply}\""
+                        }, user.FcmId);
+                }
+            }
+            catch { }
+
             return _mapper.Map<OrderComplaintSM>(complaint);
         }
 

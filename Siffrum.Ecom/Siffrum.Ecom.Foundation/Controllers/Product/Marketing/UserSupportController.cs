@@ -150,6 +150,68 @@ namespace Siffrum.Ecom.Foundation.Controllers.Product.Marketing
 
         #endregion
 
+        #region REPLY THREAD
+
+        [HttpPost("{supportRequestId}/reply")]
+        [Authorize(AuthenticationSchemes = SiffrumBearerTokenAuthHandlerRoot.DefaultSchema,
+            Roles = "SuperAdmin, SystemAdmin")]
+        public async Task<ActionResult<ApiResponse<UserSupportReplySM>>> AdminReply(
+            long supportRequestId,
+            [FromBody] ApiRequest<UserSupportReplySM> apiRequest)
+        {
+            var innerReq = apiRequest?.ReqData;
+            if (innerReq == null || string.IsNullOrWhiteSpace(innerReq.Message))
+                return BadRequest(ModelConverter.FormNewErrorResponse(
+                    DomainConstantsRoot.DisplayMessagesRoot.Display_ReqDataNotFormed,
+                    ApiErrorTypeSM.InvalidInputData_NoLog));
+
+            var adminId = User.GetUserRecordIdFromCurrentUserClaims();
+            var response = await _process.AddReply(supportRequestId, innerReq.Message, "Admin", adminId);
+            return ModelConverter.FormNewSuccessResponse(response);
+        }
+
+        [HttpPost("{supportRequestId}/reply/user")]
+        [Authorize(AuthenticationSchemes = SiffrumBearerTokenAuthHandlerRoot.DefaultSchema,
+            Roles = "User")]
+        public async Task<ActionResult<ApiResponse<UserSupportReplySM>>> UserReply(
+            long supportRequestId,
+            [FromBody] ApiRequest<UserSupportReplySM> apiRequest)
+        {
+            var innerReq = apiRequest?.ReqData;
+            if (innerReq == null || string.IsNullOrWhiteSpace(innerReq.Message))
+                return BadRequest(ModelConverter.FormNewErrorResponse(
+                    DomainConstantsRoot.DisplayMessagesRoot.Display_ReqDataNotFormed,
+                    ApiErrorTypeSM.InvalidInputData_NoLog));
+
+            var userId = User.GetUserRecordIdFromCurrentUserClaims();
+            if (userId <= 0)
+                return NotFound(ModelConverter.FormNewErrorResponse(DomainConstants.DisplayMessagesRoot.Display_Id_NotFound));
+
+            var response = await _process.AddReply(supportRequestId, innerReq.Message, "User", userId);
+            return ModelConverter.FormNewSuccessResponse(response);
+        }
+
+        [HttpGet("{supportRequestId}/replies")]
+        [Authorize(AuthenticationSchemes = SiffrumBearerTokenAuthHandlerRoot.DefaultSchema,
+            Roles = "SuperAdmin, SystemAdmin, User")]
+        public async Task<ActionResult<ApiResponse<List<UserSupportReplySM>>>> GetReplies(
+            long supportRequestId, int skip = 0, int top = 50)
+        {
+            var response = await _process.GetReplies(supportRequestId, skip, top);
+            return ModelConverter.FormNewSuccessResponse(response);
+        }
+
+        [HttpGet("{supportRequestId}/replies/count")]
+        [Authorize(AuthenticationSchemes = SiffrumBearerTokenAuthHandlerRoot.DefaultSchema,
+            Roles = "SuperAdmin, SystemAdmin, User")]
+        public async Task<ActionResult<ApiResponse<IntResponseRoot>>> GetRepliesCount(long supportRequestId)
+        {
+            var response = await _process.GetRepliesCount(supportRequestId);
+            return ModelConverter.FormNewSuccessResponse(response);
+        }
+
+        #endregion
+
         #region DELETE
 
         [HttpDelete("{id}")]
@@ -164,5 +226,3 @@ namespace Siffrum.Ecom.Foundation.Controllers.Product.Marketing
         #endregion
     }
 }
-
-    
