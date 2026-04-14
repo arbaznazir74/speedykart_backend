@@ -23,7 +23,10 @@ WORKDIR /app
 
 COPY --from=build /app/publish .
 
-# Copy the template as default config (real values come from env vars)
+# Copy the template as fallback config.
+# On the server, either:
+#   (a) Mount your real appsettings.json via docker volume/copy, OR
+#   (b) Pass secrets as environment variables (they override the template)
 COPY Siffrum.Ecom/Siffrum.Ecom.Foundation/appsettings.Template.json /app/appsettings.json
 
 # Create directory for uploaded content
