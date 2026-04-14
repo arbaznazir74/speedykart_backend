@@ -165,13 +165,22 @@ namespace Siffrum.Ecom.Foundation
         {
             if (FirebaseApp.DefaultInstance != null)
                 return;
-            var fireBasePath = @"wwwroot/content/firebase/firebase.json";
-             var path = Path.Combine(Directory.GetCurrentDirectory(), fireBasePath);
 
-            FirebaseApp.Create(new AppOptions
+            GoogleCredential credential;
+
+            var credJson = Environment.GetEnvironmentVariable("FIREBASE_CREDENTIALS_JSON");
+            if (!string.IsNullOrWhiteSpace(credJson))
             {
-                Credential = GoogleCredential.FromFile(path)
-            });
+                credential = GoogleCredential.FromJson(credJson);
+            }
+            else
+            {
+                var fireBasePath = @"wwwroot/content/firebase/firebase.json";
+                var path = Path.Combine(Directory.GetCurrentDirectory(), fireBasePath);
+                credential = GoogleCredential.FromFile(path);
+            }
+
+            FirebaseApp.Create(new AppOptions { Credential = credential });
         }
     }
 }
