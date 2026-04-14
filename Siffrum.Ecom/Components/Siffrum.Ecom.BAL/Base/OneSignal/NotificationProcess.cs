@@ -301,9 +301,13 @@ namespace Siffrum.Ecom.BAL.Base.OneSignal
                     Encoding.UTF8,
                     "application/json");
 
+                Console.WriteLine($"[SMS] Sending OTP to {phoneNumber}, payload: {JsonSerializer.Serialize(payload)}");
+
                 var response = await client.SendAsync(request);
 
                 var responseBody = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine($"[SMS] Response status: {response.StatusCode}, body: {responseBody}");
 
                 if (!response.IsSuccessStatusCode)
                     return new BoolResponseRoot(false, responseBody);
@@ -312,6 +316,8 @@ namespace Siffrum.Ecom.BAL.Base.OneSignal
                 var smsResponse = JsonSerializer.Deserialize<List<SmsResponseSM>>(responseBody);
 
                 var message = smsResponse?.FirstOrDefault()?.Response;
+
+                Console.WriteLine($"[SMS] Parsed response message: {message}");
 
                 string messageId = "";
 
