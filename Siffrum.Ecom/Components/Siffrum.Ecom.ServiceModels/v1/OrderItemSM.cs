@@ -25,7 +25,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
 
         public PaymentModeSM? PaymentMode { get; set; }
 
-        public string? SelectedToppings { get; set; }
-        public string? SelectedAddons { get; set; }
+        public List<SelectedToppingItem>? SelectedToppings { get; set; }
+        public List<SelectedAddonItem>? SelectedAddons { get; set; }
     }
 }

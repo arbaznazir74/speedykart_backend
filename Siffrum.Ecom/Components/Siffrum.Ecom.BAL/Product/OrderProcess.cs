@@ -114,6 +114,16 @@ namespace Siffrum.Ecom.BAL.Product
 
                 var orderItemDMs = _mapper.Map<List<OrderItemDM>>(itemSMs);
 
+                // Serialize toppings & addons from the request lists into JSON strings for DB
+                for (int i = 0; i < orderItemDMs.Count; i++)
+                {
+                    var src = itemSMs[i];
+                    if (src.SelectedToppings != null && src.SelectedToppings.Any())
+                        orderItemDMs[i].SelectedToppings = JsonSerializer.Serialize(src.SelectedToppings, _jsonOptions);
+                    if (src.SelectedAddons != null && src.SelectedAddons.Any())
+                        orderItemDMs[i].SelectedAddons = JsonSerializer.Serialize(src.SelectedAddons, _jsonOptions);
+                }
+
                 // 🔹 Stock validation & deduction
                 var variantIds = orderItemDMs.Select(x => x.ProductVariantId).Distinct().ToList();
                 var variants = await _apiDbContext.ProductVariant
@@ -1038,6 +1048,19 @@ namespace Siffrum.Ecom.BAL.Product
             sm.OrderStatus = (OrderStatusSM)order.OrderStatus;
             sm.PaymentStatus = (PaymentStatusSM)order.PaymentStatus;
             sm.PaymentMode = (PaymentModeSM)order.PaymentMode;
+
+            // Deserialize toppings & addons from DB JSON strings back to lists
+            if (!string.IsNullOrEmpty(dm.SelectedToppings))
+            {
+                try { sm.SelectedToppings = JsonSerializer.Deserialize<List<SelectedToppingItem>>(dm.SelectedToppings, _jsonOptions); }
+                catch { sm.SelectedToppings = null; }
+            }
+            if (!string.IsNullOrEmpty(dm.SelectedAddons))
+            {
+                try { sm.SelectedAddons = JsonSerializer.Deserialize<List<SelectedAddonItem>>(dm.SelectedAddons, _jsonOptions); }
+                catch { sm.SelectedAddons = null; }
+            }
+
             return sm;
         }
 

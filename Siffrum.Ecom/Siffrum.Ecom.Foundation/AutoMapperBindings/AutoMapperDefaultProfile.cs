@@ -62,7 +62,12 @@ namespace Siffrum.Ecom.Foundation.AutoMapperBindings
             CreateMap<ProductBannerDM, ProductBannerSM>().ReverseMap();
             CreateMap<ProductSpecificationValueDM, ProductSpecificationValueSM>().ReverseMap();
             CreateMap<ProductTagSM, ProductTagDM>().ReverseMap();
-            CreateMap<OrderItemDM, OrderItemSM>().ReverseMap();
+            CreateMap<OrderItemDM, OrderItemSM>()
+                .ForMember(dest => dest.SelectedToppings, opt => opt.Ignore())
+                .ForMember(dest => dest.SelectedAddons, opt => opt.Ignore());
+            CreateMap<OrderItemSM, OrderItemDM>()
+                .ForMember(dest => dest.SelectedToppings, opt => opt.Ignore())
+                .ForMember(dest => dest.SelectedAddons, opt => opt.Ignore());
             CreateMap<DeliveryBoyPincodesDM, DeliveryBoyPincodesSM>().ReverseMap();
             CreateMap<PlatformTypeSM, PlatformTypeDM>().ReverseMap();
             CreateMap<ProductUnitDM, ProductUnitSM>();
