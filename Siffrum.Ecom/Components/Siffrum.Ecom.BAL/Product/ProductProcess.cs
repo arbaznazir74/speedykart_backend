@@ -191,7 +191,7 @@ namespace Siffrum.Ecom.BAL.Product
                 }
             }
             var existingCategory = await _categoryProcess.GetByIdAsync(request.CategoryId);
-            if (existingCategory == null || existingCategory.Level == 1)
+            if (existingCategory == null)
             {
                 throw new SiffrumException(ApiErrorTypeSM.ModelError_NoLog, "Category not found or invalid category");
             }
