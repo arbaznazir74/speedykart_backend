@@ -73,10 +73,10 @@ namespace Siffrum.Ecom.BAL.Product
             }
 
             var defaultAddress = await _userAddressProcess.GetDefaultAddress(orderSM.UserId);
-            if (defaultAddress == null || string.IsNullOrEmpty(defaultAddress.Pincode))
+            if (defaultAddress == null)
             {
-                throw new SiffrumException(ApiErrorTypeSM.Fatal_Log, $"User with Id: {orderSM.UserId} has null or empty pincode in default address"
-                    , "Pincode associated with your default address is not present, kindly update your details");
+                throw new SiffrumException(ApiErrorTypeSM.Fatal_Log, $"User with Id: {orderSM.UserId} has no default address"
+                    , "Please set a default address before placing an order");
             }
 
             // 🔹 Store hours validation
@@ -924,13 +924,6 @@ namespace Siffrum.Ecom.BAL.Product
                     $"User with Id: {userId} has no default address",
                     "Please update the default address. Address is required for order");
             }
-            if (string.IsNullOrEmpty(userDefaultAddress.Pincode))
-            {
-                throw new SiffrumException(ApiErrorTypeSM.Fatal_Log, $"User with Id: {userId} has null or empty pincode in default address"
-                    , "Pincode associated with your default address is present, kindly update your details");
-            }
-            var userPincode = userDefaultAddress.Pincode;
-
             var sellerId = await _apiDbContext.ProductVariant
                 .AsNoTracking()
                 .Where(x => x.Id == productVariantId && x.Status == ProductStatusDM.Active)
@@ -945,13 +938,7 @@ namespace Siffrum.Ecom.BAL.Product
                     $"ProductVariant not found");
             }
 
-            var isServiceable = await _apiDbContext.DeliveryPlaces
-                .AsNoTracking()
-                .AnyAsync(x => x.SellerId == sellerId && x.Pincode == userPincode && x.Status == StatusDM.Active);
-
-            return new BoolResponseRoot(isServiceable,
-                isServiceable ? "Delivery available at your location"
-                              : "Delivery not available at your location");
+            return new BoolResponseRoot(true, "Delivery available at your location");
         }
 
         #endregion Product Availability
@@ -1168,14 +1155,9 @@ namespace Siffrum.Ecom.BAL.Product
                 throw new SiffrumException(ApiErrorTypeSM.Fatal_Log, $"User with Id: {userId} has no default address",
                     "Please update the default address. Address is required for order");
             }
-            if (string.IsNullOrEmpty(defualtAddress.Pincode))
-            {
-                throw new SiffrumException(ApiErrorTypeSM.Fatal_Log, $"User with Id: {userId} has null or empty pincode in default address"
-                    , "Pincode associated with your default address is not present, kindly update your details");
-            }
             var deliveryCharges = await _apiDbContext.DeliveryPlaces
                 .AsNoTracking()
-                .Where(x => x.Pincode == defualtAddress.Pincode)
+                .Where(x => x.Status == StatusDM.Active)
                 .Select(x => x.DeliveryCharges)
                 .FirstOrDefaultAsync();
             return new DeliveryChargeResponseSM()
