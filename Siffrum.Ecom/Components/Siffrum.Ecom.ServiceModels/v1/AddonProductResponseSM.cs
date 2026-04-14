@@ -9,6 +9,7 @@ namespace Siffrum.Ecom.ServiceModels.v1
         public string Name { get; set; }
         public string Image { get; set; }
         public decimal Price { get; set; }
+        public decimal? DiscountedPrice { get; set; }
         public int Stock { get; set; }
 
         public int AllowedQuantity { get; set; }
