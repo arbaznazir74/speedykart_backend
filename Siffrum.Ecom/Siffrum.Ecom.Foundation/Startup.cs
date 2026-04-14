@@ -120,6 +120,10 @@ namespace Siffrum.Ecom.Foundation
             });
 
             app.UseRouting();
+            if (configObject.IsCorsEnabled)
+            {
+                app.UseCors("AllowAllPolicy");
+            }
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
