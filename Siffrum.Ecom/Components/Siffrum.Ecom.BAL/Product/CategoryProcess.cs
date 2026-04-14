@@ -103,7 +103,7 @@ namespace Siffrum.Ecom.BAL.Product
                 dm.WebImage = await _imageProcess.SaveFromBase64(objSM.WebImage,"jpg","wwwroot/content/categories");
             }
 
-            dm.Status = (StatusDM)objSM.Status;
+            dm.Status = objSM.Status == 0 ? StatusDM.Active : (StatusDM)objSM.Status;
             dm.CreatedAt = DateTime.UtcNow;
             dm.CreatedBy = _loginUserDetail.LoginId;
 
